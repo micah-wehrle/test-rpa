@@ -10,6 +10,9 @@ ENV PYTHONBUFFERED=1
 COPY src /src
 COPY requirements.txt .
 
+# Spreadsheet for rpachallenge.com
+COPY data /data
+
 # Need permissions for apk
 USER root
 
