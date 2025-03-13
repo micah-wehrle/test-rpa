@@ -1,41 +1,21 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
+from bot.bot import Bot
 
-import requests
-import time
-import json
+bot = Bot()
+bot.open_new_page("https://formy-project.herokuapp.com/checkbox")
 
-import os
+# Bot code here
+print(bot.get_driver().title)
+print('hello there 1')
 
-# Had to configure to work with headless chrome, as built by docker
-# https://www.selenium.dev/blog/2023/headless-is-going-away/
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--headless=new")
-chrome_options.add_argument("--no-sandbox")
-chrome_options.add_argument("--disable-dev-shm-usage")
-chrome_options.add_argument("--single-process")
+bot.close_page()
 
-service = Service("/usr/bin/chromedriver")
 
-# Establish connection with Chrome
-driver = webdriver.Chrome(service=service, options=chrome_options)
+''' 
 
-driver.get('https://rpachallenge.com/')
+Simple form test site:
+https://formy-project.herokuapp.com/
 
-title = driver.title
+Advanced form test site:
+https://rpachallenge.com/
 
-driver.quit()
-
-update_url = 'https://ng-proj-2-default-rtdb.firebaseio.com/test.json'
-
-data = {
-  'title': title,
-  'now': time.time()
-}
-
-converted_data = json.dumps(data)
-
-r = requests.post(url=update_url, data=converted_data)
-
-print(r.json())
+'''
