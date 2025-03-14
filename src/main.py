@@ -6,7 +6,7 @@ bot = Bot()
 bot.open_new_page("https://rpachallenge.com/")
 
 # Load spreadsheet of data to be entered into RPA challenge site
-workbook = openpyxl.load_workbook('/data/challenge.xlsx')
+workbook = openpyxl.load_workbook('./data/challenge.xlsx')
 sheet = workbook.active
 
 # Click start button to begin challenge
