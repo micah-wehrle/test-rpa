@@ -1,12 +1,18 @@
 from bot.bot import Bot
 import openpyxl
+import os
 
 # Create bot and load webpage
 bot = Bot()
 bot.open_new_page("https://rpachallenge.com/")
 
+spreadsheet_location = "/data/challenge.xlsx"
+# Will need to append a . for non-alpine contexts
+if not os.getenv("DOCKERIZED"):
+  spreadsheet_location = '.' + spreadsheet_location
+
 # Load spreadsheet of data to be entered into RPA challenge site
-workbook = openpyxl.load_workbook('./data/challenge.xlsx')
+workbook = openpyxl.load_workbook(spreadsheet_location)
 sheet = workbook.active
 
 # Click start button to begin challenge
