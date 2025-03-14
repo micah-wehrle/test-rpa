@@ -1,3 +1,7 @@
+# base packages
 selenium
 requests
 openpyxl
+
+# back package dependencies which have vulnerabilities in their auto-installed versions
+setuptools>=70.0.0
