@@ -3,8 +3,10 @@ import openpyxl
 import os
 
 # Create bot and load webpage
+website = "https://rpachallenge.com/"
+print(f"Opening website: {website}")
 bot = Bot()
-bot.open_new_page("https://rpachallenge.com/")
+bot.open_new_page(website)
 
 spreadsheet_location = "/data/challenge.xlsx"
 # Will need to append a . for non-alpine contexts
@@ -12,10 +14,12 @@ if not os.getenv("DOCKERIZED"):
   spreadsheet_location = '.' + spreadsheet_location
 
 # Load spreadsheet of data to be entered into RPA challenge site
+print("Loading spreadsheet")
 workbook = openpyxl.load_workbook(spreadsheet_location)
 sheet = workbook.active
 
 # Click start button to begin challenge
+print("Starting task. . .")
 start_button = bot.find_xpath("//button[text()='Start']")
 start_button.click()
 
@@ -56,10 +60,13 @@ while submit_button:
   input_data_row += 1
 
 # Get the result message
-result = bot.find_class("message2")
-print(result.get_attribute("innerHTML"))
+print("Task completed")
+result_element = bot.find_class("message2")
+result = result_element.get_attribute("innerHTML")
+print(f"Results: {result}")
 
 # Shut down the webpage
+print("Shutting down. . .")
 bot.close_page()
 
 
