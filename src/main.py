@@ -1,6 +1,6 @@
-from bot.bot import Bot
 import openpyxl
-import os
+
+from bot.bot import Bot
 
 # Create bot and load webpage
 website = "https://rpachallenge.com/"
