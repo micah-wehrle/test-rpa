@@ -11,7 +11,7 @@ class Bot:
 
     self.page_is_open = False
   
-  def open_new_page(self, url):
+  def open_new_browser(self, url):
     if self.page_is_open:
       raise Exception("Already have webpage open. Must close before opening new page.")
     else:

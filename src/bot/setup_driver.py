@@ -18,7 +18,7 @@ def create_chromium_driver() -> WebDriver:
   if os.getenv("DOCKERIZED"):
     service = Service("/usr/bin/chromedriver")
   else:
-    service = Service("chromedriver/chromedriver")
+    service = Service("./chromedriver/chromedriver")
 
   # Establish connection with Chrome
   driver = webdriver.Chrome(service=service, options=chrome_options)

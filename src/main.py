@@ -6,12 +6,9 @@ import os
 website = "https://rpachallenge.com/"
 print(f"Opening website: {website}")
 bot = Bot()
-bot.open_new_page(website)
+bot.open_new_browser(website)
 
-spreadsheet_location = "/data/challenge.xlsx"
-# Will need to append a . for non-alpine contexts
-if not os.getenv("DOCKERIZED"):
-  spreadsheet_location = '.' + spreadsheet_location
+spreadsheet_location = "./data/challenge.xlsx"
 
 # Load spreadsheet of data to be entered into RPA challenge site
 print("Loading spreadsheet")

@@ -8,11 +8,11 @@ ENV DOCKERIZED=1
 ENV PYTHONUNBUFFERED=1
 
 # Project files are located in src
-COPY src /src
+COPY src ./src
 COPY requirements.txt .
 
 # Spreadsheet for rpachallenge.com
-COPY data /data
+COPY data ./data
 
 # Need permissions for apk
 USER root
@@ -33,4 +33,4 @@ USER chrome
 ENTRYPOINT ["/venv/bin/python"] 
 
 # Launch the selenium script
-CMD ["/src/main.py"]
+CMD ["src/main.py"]
