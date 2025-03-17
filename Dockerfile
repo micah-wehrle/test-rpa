@@ -3,8 +3,9 @@ FROM zenika/alpine-chrome
 
 # For use in the python script, to tell if it was launched in a docker container or in a test environment
 ENV DOCKERIZED=1
-# Allow python to print to the console from within docker container
-ENV PYTHONBUFFERED=1
+# Allow python to immediately print to the console from within docker container, as a crash/early exit can wipe the buffer before it is printed.
+# TODO not ideal for production as can slow down the application due to excessive printing/logging
+ENV PYTHONUNBUFFERED=1
 
 # Project files are located in src
 COPY src /src
